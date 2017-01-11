@@ -28,17 +28,40 @@ namespace Tic_Tac_Toe_2
                     string player1 = Console.ReadLine();
                     Console.WriteLine("Player Two Enter Name");
                     string player2 = Console.ReadLine();
-                    Console.WriteLine($"{player1}'s Turn");
                     string[] board = { "_", "_", "_", "_", "_", "_", "_", "_", "_" };
                   
                     {
+                        string player = player2;
+                        int count = 1;
                         bool stopBoard = true;
-                        while (true)
+                        while (stopBoard)
+                        
+                            
                         {
-                            BuildBoard(board);
+                            BuildBoard(board); // Calls and rebuilds the board.
+                            Console.WriteLine($"{player1}'s Turn");
                             int entry = int.Parse(Console.ReadLine());
-                            board[]
+                            board[entry] = "X";
+                                
+                            Console.Clear();
+                            Console.WriteLine("To The Death!");
+                            Console.WriteLine("Turn" + count);
+                            count++;
+                            if (player == player1)
+                            {
+                                player = player2;                                                                
+                            }
+                            else
+                            {
+                                BuildBoard(board); // Calls and rebuilds the board.
+                                Console.WriteLine($"{player2}'s Turn");
+                                int entry2 = int.Parse(Console.ReadLine());
+                                board[entry] = "O";
+                            }
+
+
                         }
+                        
                     }
                 }
 
@@ -55,7 +78,7 @@ namespace Tic_Tac_Toe_2
             }
 
         }
-        static void BuildBoard(string[] board)
+        static void BuildBoard(string[] board) //calls the function that builds the board.
         {
             int counter = 0;
             foreach (string place in board)
